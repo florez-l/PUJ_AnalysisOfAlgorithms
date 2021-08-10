@@ -2,10 +2,6 @@
 ## @author Leonardo Florez-Valencia (florez-l@javeriana.edu.co)
 ## =========================================================================
 
-import sys
-
-
-
 import PUJ.Helpers, PUJ.Sorting
 
 '''
@@ -18,7 +14,7 @@ Naive: Selects the k-th statistic
 '''
 def Naive( S, k ):
   if k < len( S ):
-    PUJ.Sorting.Merge( S )
+    PUJ.Sorting.Quick( S )
     return S[ k ]
   else:
     return None
