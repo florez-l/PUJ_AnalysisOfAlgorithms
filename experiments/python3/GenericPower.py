@@ -39,9 +39,6 @@ def GenericPower( a, b ):
   d = abs( b - int( b ) )
   n = int( b - d )
 
-  # Rational power
-  rp = RationalPower( a, d )
-
   # Natural power
   np = 1
   if n < 0:
@@ -50,7 +47,10 @@ def GenericPower( a, b ):
     np = NaturalPower( a, n )
   # end if
 
-  return rp * np
+  # Rational power
+  rp = RationalPower( a, d )
+
+  return np * rp
 # end def
 
 ## -------------------------------------------------------------------------
