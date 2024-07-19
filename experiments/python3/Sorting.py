@@ -2,9 +2,22 @@
 ## @author Leonardo Florez-Valencia (florez-l@javeriana.edu.co)
 ## =========================================================================
 
-import sys
+import sys, time
 sys.path.append( '../../lib/python3' )
 import PUJ.Sorting
+
+## -------------------------------------------------------------------------
+def test_sort( S, f ):
+  L = S.copy( )
+  s = time.time_ns( )
+  f( L )
+  ns = time.time_ns( ) - s
+  if not PUJ.Sorting.Helpers.is_sorted( L ):
+    raise Exception( 'Sequence was not ordered!: **', f, '**' )
+  # end if
+  print( str( ns ), end = ',' )
+# end def
+
 
 ## -------------------------------------------------------------------------
 ## ------------------------------ MAIN SCRIPT ------------------------------
@@ -38,7 +51,19 @@ algorithms = {
   }
 A = [ a.lower( ) for a in sys.argv[ 4 : ] ]
 
-print( A )
+for a in A:
+  if a in algorithms:
+    print( a, end = ',' )
+  # end if
+# end for
+print( '' )
+
+for a in A:
+  if a in algorithms:
+    test_sort( S, algorithms[ a ] )
+  # end if
+# end for
+print( '' )
 
 
 # import os, random, struct, sys, time

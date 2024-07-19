@@ -10,10 +10,11 @@ Informs if a sequence is sorted
 def is_sorted( S ):
   s = True
   i = 0
-  while i < len( S ) - 1:
+  while i < len( S ) - 1 and s:
     if S[ i + 1 ] < S[ i ]:
-      S = False
+      s = False
     # end if
+    i += 1
   # end for
   return s
 # end def

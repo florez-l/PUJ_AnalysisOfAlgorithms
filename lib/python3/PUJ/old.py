@@ -7,54 +7,12 @@ import PUJ.Helpers
 
 '''
 ----------------------------------------------------------------------------
-Native: sorts a sequence of comparable (<) elements
-@inputs: S, a reference to a secuence of comparable elements.
-@outputs: S, an ordered permutation of the input.
-----------------------------------------------------------------------------
-'''
-def Native( S ):
-  return S.sort( )
-# end def
-
-'''
-----------------------------------------------------------------------------
-Bubble: sorts a sequence of comparable (<) elements
-@inputs: S, a reference to a secuence of comparable elements.
-@outputs: S, an ordered permutation of the input.
-----------------------------------------------------------------------------
-'''
-def Bubble( S ):
-  for j in range( len( S ) ):
-    for i in range( len( S ) - j - 1 ):
-      if S[ i + 1 ] < S[ i ]:
-        S[ i ], S[ i + 1 ] = S[ i + 1 ], S[ i ]
-      # end if
-    # end for
-  # end for
-# end def
-
-'''
-----------------------------------------------------------------------------
 Insertion: sorts a sequence of comparable (<) elements
 @inputs: S, a reference to a secuence of comparable elements.
 @outputs: S, an ordered permutation of the input.
 ----------------------------------------------------------------------------
 '''
 def Insertion( S, b = 0, e = -1 ):
-  if e < 0:
-    r = len( S ) - 1
-  else:
-    r = e
-  # end if
-  for j in range( b, r + 1 ):
-    k = S[ j ]
-    i = j - 1
-    while b <= i and k < S[ i ]:
-      S[ i + 1 ] = S[ i ]
-      i = i - 1
-    # end while
-    S[ i + 1 ] = k
-  # end for
 # end def
 
 '''
