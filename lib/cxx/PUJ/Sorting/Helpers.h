@@ -1,8 +1,8 @@
 // =========================================================================
 // @author Leonardo Florez-Valencia (florez-l@javeriana.edu.co)
 // =========================================================================
-#ifndef __PUJ__Sorting__IsSorted__h__
-#define __PUJ__Sorting__IsSorted__h__
+#ifndef __PUJ__Sorting__Helpers__h__
+#define __PUJ__Sorting__Helpers__h__
 
 namespace PUJ
 {
@@ -11,7 +11,7 @@ namespace PUJ
     /**
      */
     template< class _TIt >
-    bool IsSorted( _TIt left, _TIt right )
+    bool is_sorted( _TIt left, _TIt right )
     {
       bool s = true;
       auto i = left;
@@ -24,6 +24,6 @@ namespace PUJ
   } // end namespace
 } // end namespace
 
-#endif // __PUJ__Sorting__IsSorted__h__
+#endif // __PUJ__Sorting__Helpers__h__
 
-// eof - IsSorted.h
+// eof - $RCSfile$

@@ -41,4 +41,4 @@ namespace PUJ
 
 #endif // __PUJ__Sorting__Insertion__h__
 
-// eof - Insertion.h
+// eof - $RCSfile$
