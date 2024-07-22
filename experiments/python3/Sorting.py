@@ -15,7 +15,7 @@ def test_sort( S, f ):
   if not PUJ.Sorting.Helpers.is_sorted( L ):
     raise Exception( 'Sequence was not ordered!: **', f, '**' )
   # end if
-  print( str( ns ), end = ',' )
+  print( '{:.4e}'.format( ns * 1e-9 ), end = ' ' )
 # end def
 
 
@@ -51,70 +51,23 @@ algorithms = {
   }
 A = [ a.lower( ) for a in sys.argv[ 4 : ] ]
 
+print( 'size ', end = '' )
 for a in A:
   if a in algorithms:
-    print( a, end = ',' )
+    print( a, end = ' ' )
   # end if
 # end for
 print( '' )
 
-for a in A:
-  if a in algorithms:
-    test_sort( S, algorithms[ a ] )
-  # end if
+# Process data
+for n in range( 0, size + 1, step ):
+  print( str( n ) + ' ', end = '' )
+  for a in A:
+    if a in algorithms:
+      test_sort( S[ 0: n ], algorithms[ a ] )
+    # end if
+  # end for
+  print( '' )
 # end for
-print( '' )
-
-
-# import os, random, struct, sys, time
-
-# import PUJ.Helpers, PUJ.Sorting
-
-# ## -------------------------------------------------------------------------
-# def TestSort( S, f ):
-#   L = S[ : ]
-#   s = time.time_ns( )
-#   f( L )
-#   ns = time.time_ns( ) - s
-#   print(
-#       ' ' + str( PUJ.Helpers.IsSorted( S ) ) +
-#       ' ' + str( PUJ.Helpers.IsSorted( L ) ) +
-#       ' ' + str( ns ), end = ''
-#       )
-# # end def
-
-# ## -------------------------------------------------------------------------
-# # Read command-line input values
-# if len( sys.argv ) < 5:
-#   print(
-#     'Usage: python ' + sys.argv[ 0 ] +
-#     ' start end step [bubble] [insertion] [quick] [merge] [native]'
-#     )
-#   sys.exit( 1 )
-# # end if
-
-# start_size = int( sys.argv[ 1 ] )
-# end_size = int( sys.argv[ 2 ] )
-# step_size = int( sys.argv[ 3 ] )
-
-# a_b = 'bubble' in sys.argv[ 4 : ]
-# a_i = 'insertion' in sys.argv[ 4 : ]
-# a_q = 'quick' in sys.argv[ 4 : ]
-# a_m = 'merge' in sys.argv[ 4 : ]
-# a_n = 'native' in sys.argv[ 4 : ]
-
-# # Process data
-# for n in range( start_size, end_size, step_size ):
-#   S = [ random.randint( -1000, 1000 ) for i in range( n ) ]
-
-#   print( n, end = '' )
-#   if a_b: TestSort( S, PUJ.Sorting.Bubble )
-#   if a_i: TestSort( S, PUJ.Sorting.Insertion )
-#   if a_q: TestSort( S, PUJ.Sorting.Quick )
-#   if a_m: TestSort( S, PUJ.Sorting.Merge )
-#   if a_n: TestSort( S, PUJ.Sorting.Native )
-#   print( '' )
-  
-# # end for
 
 ## eof - $RCSfile$
