@@ -14,7 +14,7 @@ namespace PUJ
     /**
      */
     template< class _TIt >
-    void Merge( _TIt left, _TIt middle, _TIt right )
+    void _Merge( _TIt left, _TIt middle, _TIt right )
     {
       using _TTraits = typename std::iterator_traits< _TIt >;
       using _TValue = typename _TTraits::value_type;
@@ -22,29 +22,29 @@ namespace PUJ
       std::vector< _TValue > l( left, middle ), r( middle, right );
       auto lIt = l.begin( );
       auto rIt = r.begin( );
-      for( auto mIt = left; mIt != right; ++mIt )
+      for( auto kIt = left; kIt != right; ++kIt )
       {
         if( lIt != l.end( ) && rIt != r.end( ) )
         {
           if( *lIt < *rIt )
           {
-            *mIt = *lIt;
+            *kIt = *lIt;
             lIt++;
           }
           else
           {
-            *mIt = *rIt;
+            *kIt = *rIt;
             rIt++;
           } // end if
         }
         else if( lIt != l.end( ) && rIt == r.end( ) )
         {
-          *mIt = *lIt;
+          *kIt = *lIt;
           lIt++;
         }
         else if( lIt == l.end( ) && rIt != r.end( ) )
         {
-          *mIt = *rIt;
+          *kIt = *rIt;
           rIt++;
         } // end if
       } // end for
@@ -62,7 +62,7 @@ namespace PUJ
         std::advance( middle, n >> 1 );
         Merge( left, middle );
         Merge( middle, right );
-        Merge( left, middle, right );
+        _Merge( left, middle, right );
       } // end if
     }
   } // end namespace
@@ -70,4 +70,4 @@ namespace PUJ
 
 #endif // __PUJ__Sorting__Merge__h__
 
-// eof - Merge.h
+// eof - $RCSfile$

@@ -8,19 +8,27 @@ namespace PUJ
 {
   namespace Sorting
   {
-    /**
-     */
-    template< class _TIt >
-    bool is_sorted( _TIt left, _TIt right )
+    namespace Helpers
     {
-      bool s = true;
-      auto i = left;
-      auto j = i;
-      j++;
-      for( ; j != right; ++i, ++j )
-        s &= !( *j < *i );
-      return( s );
-    }
+      /**
+       */
+      template< class _TIt >
+      bool is_sorted( _TIt left, _TIt right )
+      {
+        if( left != right )
+        {
+          bool s = true;
+          auto i = left;
+          auto j = i;
+          j++;
+          for( ; j != right; ++i, ++j )
+            s &= !( *j < *i );
+          return( s );
+        }
+        else
+          return( true );
+      }
+    } // end namespace
   } // end namespace
 } // end namespace
 
