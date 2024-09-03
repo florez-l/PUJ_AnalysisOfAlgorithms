@@ -1,5 +1,6 @@
-import pprint
-
+## =========================================================================
+## @author Leonardo Florez-Valencia (florez-l@javeriana.edu.co)
+## =========================================================================
 
 '''
 '''
@@ -73,36 +74,40 @@ def LCS_BottomUp( X, Y ):
         b = C[ i ][ j - 1 ]
         if a > b:
           C[ i ][ j ] = a
-          B[ i ][ j ] = ( 0, -1 )
+          B[ i ][ j ] = ( -1, 0 )
         else:
           C[ i ][ j ] = b
-          B[ i ][ j ] = ( -1, 0 )
+          B[ i ][ j ] = ( 0, -1 )
         # end if
       # end if
     # end for
   # end for
 
-  pprint.pprint( B )
-
-  Z = []
+  # Backtrack
   i, j = len( X ), len( Y )
+  Z = [ None for i in range( C[ i ][ j ] ) ]
+  k = C[ i ][ j ]
   while i > 0 and j > 0:
-    print( i, j, B[ i ][ j ] )
-    if B[ i ][ j ] == ( -1, -1 ):
-      print( 'ok' )
-      Z += [ X[ i - 1 ] ]
+    d = B[ i ][ j ]
+    if d == ( -1, -1 ):
+      k -= 1
+      Z[ k ] = X[ i - 1 ]
     # end if
-    i += B[ i ][ j ][ 0 ]
-    j += B[ i ][ j ][ 1 ]
+    i += d[ 0 ]
+    j += d[ 1 ]
   # end while
-  
-  return ( C[ len( X ) ][ len( Y ) ], Z )
+  return Z
 # end def
 
-X = 'ocaso'
-Y = 'casa'
+'''
+--------------------- MAIN ---------------------
+'''
+X = 'focasowxyzcasado'
+Y = 'locaseodecosas'
 
 print( LCS_Naive( X, Y ) )
 print( LCS_Memoized( X, Y ) )
-print( LCS_BottomUp( X, Y ) )
-#print( LCS_BottomUp( 'anita lava la tina', 'dabale arroz a la zorra el abad' ) )
+print( '"' + ''.join( c for c in LCS_BottomUp( X, Y ) ) + '"' )
+print( '"' + ''.join( c for c in LCS_BottomUp( 'anita lava la tina', 'dabale arroz a la zorra el abad' ) ) + '"' )
+
+## eof - $RCSfile$
