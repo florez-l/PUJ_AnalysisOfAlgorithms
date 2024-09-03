@@ -13,7 +13,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
 include(GenerateExportHeader)
 
 ## == Directories containing code
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 subdirs(experiments/cxx)
 
 ## eof - $RCSfile$

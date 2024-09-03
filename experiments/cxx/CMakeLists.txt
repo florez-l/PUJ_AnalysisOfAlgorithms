@@ -7,14 +7,6 @@ include_directories(
   ${PROJECT_SOURCE_DIR}/lib/cxx
   )
 
-add_executable(BubbleSort BubbleSort.cxx)
-add_executable(InserionSort InsertionSort.cxx)
-add_executable(MergeSort MergeSort.cxx)
-add_executable(TimSort TimSort.cxx)
-
-add_executable(LoopBubbleSort LoopBubbleSort.cxx)
-add_executable(LoopInserionSort LoopInsertionSort.cxx)
-add_executable(LoopMergeSort LoopMergeSort.cxx)
-add_executable(LoopTimSort LoopTimSort.cxx)
+add_executable(Sorting Sorting.cxx)
 
 ## eof - $RCSfile$
