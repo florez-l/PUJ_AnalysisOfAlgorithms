@@ -93,7 +93,7 @@ def MatrixChain_BottomUp( D ):
   return ( M[ 1 ][ len( D ) - 1 ], MatrixChain_BottomUp_Backtracking( B, 1, len( D ) - 1 ) )
 # end def
 
-D = [ 50, 75, 100, 2, 4, 5, 6, 7, 8, 9, 10, 100, 5, 2 ]
+D = [ 50, 75, 100, 2, 4, 5, 6, 7, 8, 9, 10, 100, 5, 2, 300, 1 ]
 print( MatrixChain_Naive( D ) )
 print( MatrixChain_Memoized( D ) )
 print( MatrixChain_BottomUp( D ) )
