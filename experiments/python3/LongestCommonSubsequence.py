@@ -2,6 +2,8 @@
 ## @author Leonardo Florez-Valencia (florez-l@javeriana.edu.co)
 ## =========================================================================
 
+import pprint
+
 '''
 '''
 def LCS_Naive_Aux( X, Y, i, j ):
