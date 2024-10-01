@@ -2,7 +2,7 @@
 ## @author Leonardo Florez-Valencia (florez-l@javeriana.edu.co)
 ## =========================================================================
 
-import itertools, re, sys, unidecode
+import sys
 import HuffmanTree, OptimalBinarySearchTree
 
 if len( sys.argv ) < 3:
@@ -11,17 +11,8 @@ if len( sys.argv ) < 3:
 # end if
 
 # Read message
-pat = re.compile( '[\\W_]+' )
-fstr = open( sys.argv[ 1 ] )
-M = \
-  [ \
-    re.sub( pat, '', w ).lower( ) \
-    for w in list( \
-      itertools.chain.from_iterable( \
-        [ unidecode.unidecode( l ).split( ) for l in fstr.readlines( ) ] \
-        ) \
-      ) \
-  ]
+fstr = open( sys.argv[ 1 ], mode = 'rb' )
+M = fstr.read( )
 fstr.close( )
 
 # Build histograms
@@ -39,13 +30,10 @@ Q = [ float( 0 ) for p in range( len( P ) + 1 ) ]
 if sys.argv[ 2 ] == 'opt':
   oT = OptimalBinarySearchTree.build( T, P, Q )
 else:
-  # Encode message
   oT = HuffmanTree.build( T, P )
-  eM = HuffmanTree.encode( oT, M )
-
-  # Decode message
-  dM = HuffmanTree.decode( oT, eM )
-  print( dM )
 # end if
+
+print( oT.weight( ) )
+print( oT.height( ) )
 
 ## eof - $RCSfile$

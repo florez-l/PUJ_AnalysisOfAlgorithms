@@ -61,6 +61,21 @@ class HuffmanTree( BinaryTree ):
 
     # end if
   # end def
+x
+  '''
+  '''
+  def decode( self, M, i = 0 ):
+    if not self.m_V[ 1 ] is None:
+      return ( self.m_V[ 1 ], i )
+    else:
+      if M[ i ] == '0':
+        return self.m_L.decode( M, i + 1 )
+      else:
+        return self.m_R.decode( M, i + 1 )
+      # end if
+    # end if
+  # end def
+  
 # end class
 
 '''
@@ -81,6 +96,26 @@ def build( T, P ):
   # end while
 
   return H[ 0 ]
+# end def
+
+'''
+'''
+def encode( hT, M ):
+  code = hT.encode( )
+  return ''.join( [ code[ t ] for t in M ] )
+# end def
+
+'''
+'''
+def decode( hT, eM ):
+  dM = ''
+  r = hT.decode( eM )
+  while r[ 1 ] < len( eM ):
+    dM += r[ 0 ] + ' '
+    r = hT.decode( eM, r[ 1 ] )
+  # end while
+  dM += r[ 0 ]
+  return dM
 # end def
 
 ## eof - $RCSfile$
