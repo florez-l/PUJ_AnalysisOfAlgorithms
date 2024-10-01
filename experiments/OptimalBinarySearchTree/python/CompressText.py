@@ -45,7 +45,12 @@ else:
 
   # Decode message
   dM = HuffmanTree.decode( oT, eM )
-  print( dM )
+  # print( dM )
+  print( len( eM ) / 8 )
+  print( len( M ) )
 # end if
+
+print( oT.height( ) )
+print( oT.weight( ) )
 
 ## eof - $RCSfile$

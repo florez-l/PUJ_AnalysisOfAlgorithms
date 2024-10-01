@@ -61,7 +61,7 @@ class HuffmanTree( BinaryTree ):
 
     # end if
   # end def
-x
+
   '''
   '''
   def decode( self, M, i = 0 ):
