@@ -28,10 +28,10 @@ void SolveHanoi( unsigned int n, char* start, char* end, char* aux )
 
 int main( int argc, char* argv[] )
 {
+  unsigned int n = 3;
   if( argc > 1 )
-    SolveHanoi( atoi( argv[ 1 ] ), "tower 1", "tower 3", "tower 2" );
-  else
-    SolveHanoi( 3, "tower 1", "tower 3", "tower 2" );
+    n = atoi( argv[ 1 ] );
+  SolveHanoi( 3, "tower 1", "tower 3", "tower 2" );
 
   return 0;
 }
