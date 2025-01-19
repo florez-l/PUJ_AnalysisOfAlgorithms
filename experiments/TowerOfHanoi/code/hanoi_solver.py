@@ -18,12 +18,11 @@ if __name__ == '__main__':
 
   import sys
 
+  n = 3
   if len( sys.argv ) > 1:
-    SolveHanoi( int( sys.argv[ 1 ] ) )
-  else:
-    SolveHanoi( 3, 'tower 1', 'tower 3', 'tower 2' )
+    n = int( sys.argv[ 1 ] )
   # end if
-        
+  SolveHanoi( n, 'tower 1', 'tower 3', 'tower 2' )
 # end if
 
 ## eof - hanoi_solver.py
