@@ -18,6 +18,32 @@
  * @output a sequence of movements <(from,to)> encoded with tower
  *         identificators.
  */
+void SolveHanoi_aux(
+  unsigned char* M,
+  unsigned int n, unsigned char start, unsigned char end, unsigned char aux,
+  unsigned long* i
+  )
+{
+  if( n == 1 )
+  {
+    M[ ( *i )++ ] = start;
+    M[ ( *i )++ ] = end;
+  }
+  else
+  {
+    SolveHanoi_aux( M, n - 1, start, aux, end, i );
+    SolveHanoi_aux( M, 1, start, end, aux, i );
+    SolveHanoi_aux( M, n - 1, aux, end, start, i );
+  } /* end if */
+}
+
+/*
+ * Solve a Towers of Hanoi puzzle with n disks and start-aux-end towers.
+ * @input n number of disks (natural).
+ * @input (start,end,aux) identifications for each tower.
+ * @output a sequence of movements <(from,to)> encoded with tower
+ *         identificators.
+ */
 unsigned long SolveHanoi(
   unsigned char** M,
   unsigned int n, unsigned char start, unsigned char end, unsigned char aux
@@ -27,37 +53,10 @@ unsigned long SolveHanoi(
 
   *M = ( unsigned char* )calloc( nM, sizeof( unsigned char ) );
 
+  unsigned long i = 0;
+  SolveHanoi_aux( *M, n, start, end, aux, &i );
+
   return nM;
-
-  /* TODO
-     
-
-     if( n == 1 )
-     {
-     if( nM == 0 )
-     {
-     printf( "first\n" );
-     *M = ( unsigned char* )calloc( 2, sizeof( unsigned char ) );
-     }
-     else
-     {
-     printf( "second %d %d\n", nM, nM + 2 );
-     *M = ( unsigned char* )reallocarray( M, nM + 2, sizeof( unsigned char ) );
-     printf( "done\n" );
-     }
-     ( *M )[ nM ] = start;
-     ( *M )[ nM + 1 ] = end;
-
-     return nM + 2;
-     }
-     else
-     {
-     nnM = SolveHanoi( M, nM, n - 1, start, aux, end );
-     nnM = SolveHanoi( M, nnM, 1, start, end, aux );
-     nnM = SolveHanoi( M, nnM, n - 1, aux, end, start );
-     return nnM;
-     } end if
-  */
 }
 
 /*
@@ -91,7 +90,7 @@ int main( int argc, char* argv[] )
   } /* end if */
 
   unsigned char* M = NULL;
-  unsigned long nM = SolveHanoi( &M, n, 0, 1, 2 );
+  unsigned long nM = SolveHanoi( &M, n, 1, 3, 2 );
   PrintHanoiSolution( M, nM );
   return 0;
 }
