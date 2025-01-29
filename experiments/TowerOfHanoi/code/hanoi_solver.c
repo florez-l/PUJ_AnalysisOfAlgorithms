@@ -92,6 +92,8 @@ int main( int argc, char* argv[] )
   unsigned char* M = NULL;
   unsigned long nM = SolveHanoi( &M, n, 1, 3, 2 );
   PrintHanoiSolution( M, nM );
+  free( M );
+
   return 0;
 }
 

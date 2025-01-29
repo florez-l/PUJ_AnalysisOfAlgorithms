@@ -9,79 +9,57 @@
  * =========================================================================
  */
 
-// import SolveHanoi;
+import java.util.*;
 
 class hanoi_solver
 {
-  /**
-   * Class that encapsulates a solver to the Towers of Hanoi puzzle.
+  /*
+   * Solve a Towers of Hanoi puzzle with n disks and start-aux-end towers.
+   * @input n number of disks (natural).
+   * @input (start,end,aux) identifications for each tower.
+   * @input {private} init a flag indicating that the puzzle has just started
+   *        to be solved.
+   * @output the sequence of movements <(from,to)> encoded with tower
+   *         identificators is saved in the m_Solution attribute.
    */
-  public class SolveHanoi
-  {
-    /*
-     * Create an object with an empty movements sequence.
-     */
-    public SolveHanoi( )
-      {
-      }
-
-    /*
-     * Solve a Towers of Hanoi puzzle with n disks and start-aux-end towers.
-     * @input n number of disks (natural).
-     * @input (start,end,aux) identifications for each tower.
-     * @input {private} init a flag indicating that the puzzle has just started
-     *        to be solved.
-     * @output the sequence of movements <(from,to)> encoded with tower
-     *         identificators is saved in the m_Solution attribute.
-     */
-    public void solve( int n, String start, String end, String aux )
-      {
-      }
-
-    private void solve(
-      int n, String start, String end, String aux, boolean init
-      )
-      {
-        /* TODO
-           if( init )
-           this->m_Solution.clear( );
-
-           if( n == 1 )
-           this->m_Solution.push_back( std::make_tuple( start, end, aux ) );
-           else
-           {
-           this->solve( n - 1, start, aux, end, false );
-           this->solve( 1, start, end, aux, false );
-           this->solve( n - 1, aux, end, start, false );
-           } // end if
-        */
-      }
-
-    // public:
-    /*
-     * Represent, in an human readable way, the sequence of Towers of Hanoi
-     * movements saved in the attribute m_Solution.
-     */
-    /* TODO
-       friend std::ostream& operator<<( std::ostream& out, const Self& solver )
-       {
-       for( unsigned long long i = 0; i < solver.m_Solution.size( ); ++i )
-       {
-       out
-       << "from "
-       << std::get< 0 >( solver.m_Solution[ i ] )
-       << " to "
-       << std::get< 1 >( solver.m_Solution[ i ] );
-       if( i < solver.m_Solution.size( ) - 1 )
-       out << std::endl;
-       } // end for
-       return( out );
+  public static List< String > SolveHanoi(
+    int n, String start, String end, String aux
+    )
+    {
+      List< String > M = new ArrayList< String >( );
+      SolveHanoi( n, start, end, aux, M );
+      return M;
     }
 
-    private:
-    TSolution m_Solution;
-    */
-  }
+  private static void SolveHanoi(
+    int n, String start, String end, String aux, List< String > M
+    )
+    {
+      if( n == 1 )
+      {
+        M.add( start );
+        M.add( end );
+      }
+      else
+      {
+        SolveHanoi( n - 1, start, aux, end, M );
+        SolveHanoi( 1, start, end, aux, M );
+        SolveHanoi( n - 1, aux, end, start, M );
+      } // end if
+    }
+
+  /*
+   * Print in an human readable way a sequence of Towers of Hanoi movements.
+   * @input M a sequence of movements <(from,to)> encoded with tower
+   *          identificators.
+   */
+  public static void PrintHanoiSolution( List< String > M )
+    {
+      for( int i = 0 ; i < M.size( ); i += 2 )
+        System.out.println(
+          "move from " + M.get( i ) + " to " + M.get( i + 1 )
+          );
+    }
 
   /*
    * ********************************************************************* *
@@ -101,8 +79,8 @@ class hanoi_solver
         System.exit( 1 );
       } // end if
 
-      SolveHanoi solver = new SolveHanoi( );
-      //solver.solve( n, "tower 1", "tower 3", "tower 2" );
+      List< String > M = SolveHanoi( n, "tower 1", "tower 3", "tower 2" );
+      PrintHanoiSolution( M );
     }
 }
 
