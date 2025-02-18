@@ -1,6 +1,6 @@
 \documentclass[twoside,spanish]{elsarticle}
 \usepackage[T1]{fontenc}
-\usepackage[latin9]{inputenc}
+% \usepackage[latin9]{inputenc}
 \pagestyle{headings}
 \usepackage{float}
 \usepackage{amstext}
@@ -25,15 +25,15 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 
-\journal{Curso de <<An·lisis de algoritmos>>, PUJ, Bogot·, Colombia - }
+\journal{Curso de <<An√°lisis de algoritmos>>, PUJ, Bogot√°, Colombia - }
 
 
 \makeatother
 
-\usepackage{babel}
+\usepackage[spanish]{babel}
 \addto\shorthandsspanish{\spanishdeactivate{~<>}}
 
-\providecommand{\definitionname}{DefiniciÛn}
+\providecommand{\definitionname}{Definici√≥n}
 \providecommand{\theoremname}{Teorema}
 
 \begin{document}
@@ -45,16 +45,16 @@
 \tnotetext[t1]{Este documento presenta la escritura formal de un algoritmo que soluciona
 el juego de las Torres de Hanoi.}
 
-\author[lfv]{Leonardo FlÛrez-Valencia}
+\author[lfv]{Leonardo Fl√≥rez-Valencia}
 
 \ead{florez-l@javeriana.edu.co}
 
-\address[lfv]{Pontificia Universidad Javeriana, Bogot·, Colombia}
+\address[lfv]{Pontificia Universidad Javeriana, Bogot√°, Colombia}
 
 \begin{abstract}
 En este documento se presenta la escritura formal del problema ``calcular
 la secuencia de pasos para resolver el juego de las Torres de Hanoi'',
-junto con un algoritmo de soluciÛn.
+junto con un algoritmo de soluci√≥n.
 \end{abstract}
 
 \begin{keyword}
@@ -63,45 +63,45 @@ algoritmo, escritura formal, Torres de Hanoi.
 
 \end{frontmatter}{}
 
-\section{An·lisis del problema}
+\section{An√°lisis del problema}
 
 Se desea escribir un algoritmo informar la secuencia de pasos que
 resuelven el juego de las torres de Hanoi. Antes de proponer dicha
-soluciÛn algorÌtmica, primero es importante describir el juego.
+soluci√≥n algor√≠tmica, primero es importante describir el juego.
 
 \begin{defn}
-Las Torres de Hanoi es un rompecabezas o juego matem·tico inventado
-en 1883 por el matem·tico francÈs …douard Lucas. Es un juego de un
-jugador que consiste en un n˙mero de discos perforados de radio creciente
-que se apilan insert·ndose en uno de las tres torres fijadas a un
+Las Torres de Hanoi es un rompecabezas o juego matem√°tico inventado
+en 1883 por el matem√°tico franc√©s √âdouard Lucas. Es un juego de un
+jugador que consiste en un n√∫mero de discos perforados de radio creciente
+que se apilan insert√°ndose en uno de las tres torres fijadas a un
 tablero. El objetivo del juego es trasladar la pila a otro de los
 postes siguiendo las reglas:
 \end{defn}
 
 \begin{enumerate}
 \item solo se puede mover un disco a la vez y
-\item no se puede colocar un disco m·s grande encima de un disco m·s pequeÒo
+\item no se puede colocar un disco m√°s grande encima de un disco m√°s peque√±o
 \end{enumerate}
 
-Un esquema de un estado del juego se presenta a continuaciÛn:
+Un esquema de un estado del juego se presenta a continuaci√≥n:
 \begin{center}
 \includegraphics[width=0.75\textwidth]{hanoi_schema}
 \par\end{center}
 
-De esta descripciÛn del juego se puede concluir:
+De esta descripci√≥n del juego se puede concluir:
 \begin{enumerate}
-\item La cantidad de discos es finita y contable, entonces es un n˙mero
+\item La cantidad de discos es finita y contable, entonces es un n√∫mero
 natural $n\in\mathbb{N}$.
-\item El radio exacto de cada disco es irrelevante, lo ˙nico relevante es
+\item El radio exacto de cada disco es irrelevante, lo √∫nico relevante es
 un dato que permita ordenar los discos, entonces el radio de cada
-disco se puede representar con un n˙mero natural $r\in\mathbb{N}$.
+disco se puede representar con un n√∫mero natural $r\in\mathbb{N}$.
 \end{enumerate}
 
-\section{DiseÒo del problema}
+\section{Dise√±o del problema}
 
-El an·lisis anterior nos permite diseÒar el problema: definir las
-entradas y salidas de un posible algoritmo de soluciÛn, que a˙n no
-est· definido.
+El an√°lisis anterior nos permite dise√±ar el problema: definir las
+entradas y salidas de un posible algoritmo de soluci√≥n, que a√∫n no
+est√° definido.
 \begin{enumerate}
 \item \emph{\uline{Entradas}}:
 \begin{enumerate}
@@ -114,11 +114,11 @@ y \textbf{\emph{\uline{a}}}uxiliar.
 la secuencia de pasos para solucionar el juego.
 \end{enumerate}
 
-\section{Algoritmo de soluciÛn}
+\section{Algoritmo de soluci√≥n}
 
-El algoritmo de soluciÛn se basa en una estrategia de soluciÛn recurrente,
+El algoritmo de soluci√≥n se basa en una estrategia de soluci√≥n recurrente,
 donde se busca mover todos los discos superiores a la torre auxiliar,
-para luego mover el disco m·s grande al destino.
+para luego mover el disco m√°s grande al destino.
 
 \begin{algorithm}
 \begin{algorithm}[H]
@@ -167,14 +167,14 @@ and \textbf{\emph{\uline{a}}}uxiliary)}
 La secuencia de movimientos se actualiza respetando las reglas del
 juego.
 
-\subsection{An·lisis de complejidad}
+\subsection{An√°lisis de complejidad}
 
 El algoritmo exhibe una complejidad $O\left(2^{n}\right)$.
 
-\subsection{Notas de implementaciÛn}
+\subsection{Notas de implementaci√≥n}
 
 La secuencia de retorno $M$ debe ser implementada con una estructura
 lineal estilo ``lista de tuplas''. Los identificadores de las torres
-deben ser representados por valores finitos contables (n˙meros naturales
+deben ser representados por valores finitos contables (n√∫meros naturales
 o enteros o cadenas de caracteres).
 \end{document}
